@@ -2,50 +2,38 @@
   "name": "faktura",
   "version": "0.0.1",
   "description": "",
-  "main": "./distribution/index.js",
+  "main": "build/index.js",
   "scripts": {
-    "test": "echo 'no tests'",
-    "prebuild": "npm test && rimraf distribution",
-    "build": "cross-env BABEL_ENV=production babel --out-dir distribution source",
-    "prepublish": "npm run nsp && npm run build",
-    "start": "npm run build && node ./distribution/index.js",
-    "watch:start": "chokidar \"source/*.js\" \"source/**/*.js\" -c \"npm run start\"",
-    "eslint": "eslint source",
-    "eslint:fix": "eslint --fix source",
-    "repl": "npm run build && babel-node",
-    "nsp": "nsp check"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf build && babel source --out-dir build",
+    "prepublish": "npm run format && npm run lint && nsp check && npm run build",
+    "lint": "eslint source",
+    "format": "prettier-standard \"source/**/*.js\""
   },
   "keywords": [],
-  "author": "rogerbf <roger@bergfalk.nu> (http://bergfalk.nu/)",
+  "author": "rogerbf <roger@bergfa.lk> (http://bergfa.lk/)",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-stage-3": "^6.24.1",
-    "chokidar-cli": "^1.2.0",
-    "cross-env": "^5.0.1",
-    "eslint": "^4.0.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-node": "^5.0.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "nsp": "^2.6.3",
-    "rimraf": "^2.6.1"
+    "babel-cli": "6.26.0",
+    "babel-eslint": "8.0.1",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-plugin-dynamic-import-node": "1.1.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-3": "6.24.1",
+    "eslint-config-standard": "10.2.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-node": "5.2.0",
+    "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-standard": "3.0.1",
+    "nsp": "2.8.1",
+    "prettier-standard": "7.0.3",
+    "rimraf": "2.6.2"
   },
+  "module": "source/index.js",
   "files": [
-    "distribution",
-    "README.md"
-  ],
-  "dependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rogerbf/faktura.git"
-  },
-  "bugs": {
-    "url": "https://github.com/rogerbf/faktura/issues"
-  },
-  "homepage": "https://github.com/rogerbf/faktura#readme"
+    "LICENSE",
+    "README.md",
+    "source",
+    "build"
+  ]
 }

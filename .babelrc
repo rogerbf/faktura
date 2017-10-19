@@ -1,6 +1,5 @@
 {
   "presets": [
-    "stage-3",
     [
       "env",
       {
@@ -8,17 +7,11 @@
           "node": "current"
         }
       }
-    ]
+    ],
+    "stage-3"
   ],
   "plugins": [
-    "add-module-exports"
-  ],
-  "env": {
-    "production": {
-      "ignore": [
-        "*.test.*"
-      ],
-      "comments": false
-    }
-  }
+    "add-module-exports",
+    "dynamic-import-node"
+  ]
 }
